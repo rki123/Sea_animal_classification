@@ -150,17 +150,18 @@ def run_inference(img: Image.Image):
     arr = np.expand_dims(arr, 0)
     arr = tf.keras.applications.efficientnet.preprocess_input(arr)
 
-    t_eff = torch.tensor(arr, dtype=torch.float32).to(DEVICE)
+    t_eff = torch.from_numpy(arr).float().to(DEVICE)
     with torch.no_grad():
-        eff_probs = torch.softmax(eff_model(t_eff, training=False), dim=-1).cpu().numpy()[0]
+        eff_model_output = eff_model(t_eff, training=False)
+        eff_probs = torch.softmax(eff_model_output, dim=-1).cpu().numpy()[0]
 
     # ViT path
     t_vit = vit_tf(img.convert("RGB")).unsqueeze(0).to(DEVICE)
-    
     t_vit = t_vit.float()
     
     with torch.no_grad():
-        vit_probs = torch.softmax(vit_model(t_vit), dim=1).cpu().numpy()[0]
+        vit_model_output = vit_model(t_vit)
+        vit_probs = torch.softmax(vit_model_output, dim=1).cpu().numpy()[0]
 
     if torch.cuda.is_available():
         torch.cuda.synchronize()
@@ -173,7 +174,6 @@ def run_inference(img: Image.Image):
         blended[top_idx].tolist(),
         arr,
     )
-
 
 def _find_layer(model, name):
     for layer in model.layers:
@@ -195,7 +195,7 @@ def gradcam(model, arr, class_idx):
     h1 = layer.register_forward_hook(lambda m, i, o: acts.append(o))
     h2 = layer.register_full_backward_hook(lambda m, gi, go: grads.append(go[0]))
 
-    t = torch.tensor(arr, dtype=torch.float32).to(DEVICE)
+    t = torch.from_numpy(arr).float().to(DEVICE)
     model.zero_grad()
     try:
         with torch.enable_grad():
