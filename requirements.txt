@@ -2,8 +2,8 @@
 # Install separately — pip cannot resolve the CUDA index automatically:
 # pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 \
 #     --index-url https://download.pytorch.org/whl/cu121
-torch==2.5.1+cu121
-torchvision==0.20.1+cu121
+torch==2.5.1
+torchvision==0.20.1
 
 # ─── Keras 3 (PyTorch backend) ────────────────────────────────────────────────
 keras==3.12.3
