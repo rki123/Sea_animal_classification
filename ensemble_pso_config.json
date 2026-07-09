@@ -1,0 +1,31 @@
+{
+  "eff_weight": 0.3819947841519541,
+  "vit_weight": 0.6180052158480459,
+  "classes": [
+    "Clams",
+    "Corals",
+    "Crabs",
+    "Dolphin",
+    "Eel",
+    "Fish",
+    "Jelly Fish",
+    "Lobster",
+    "Nudibranchs",
+    "Octopus",
+    "Otter",
+    "Penguin",
+    "Puffers",
+    "Sea Rays",
+    "Sea Urchins",
+    "Seahorse",
+    "Seal",
+    "Sharks",
+    "Shrimp",
+    "Squid",
+    "Starfish",
+    "Turtle_Tortoise",
+    "Whale"
+  ],
+  "val_accuracy": 0.9340182648401827,
+  "test_accuracy": 0.9300328827183048
+}
