@@ -126,6 +126,7 @@ def load_all():
     try:
         eff = load_efficientnet(n)
         vit = load_vit(n)
+        vit = vit.float()
         vit.eval()
     except Exception as e:
         return None, None, None, None, str(e)
@@ -155,9 +156,11 @@ def run_inference(img: Image.Image):
 
     # ViT path
     t_vit = vit_tf(img.convert("RGB")).unsqueeze(0).to(DEVICE)
+    
+    t_vit = t_vit.float()
+    
     with torch.no_grad():
-        with torch.amp.autocast(device_type="cuda" if torch.cuda.is_available() else "cpu"):
-            vit_probs = torch.softmax(vit_model(t_vit), dim=1).cpu().numpy()[0]
+        vit_probs = torch.softmax(vit_model(t_vit), dim=1).cpu().numpy()[0]
 
     if torch.cuda.is_available():
         torch.cuda.synchronize()
