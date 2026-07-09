@@ -269,7 +269,7 @@ with col1:
     if upload:
         try:
             image = Image.open(upload)
-            st.image(image, caption="Your image", use_container_width=True)
+            st.image(image, caption="Your image", width="stretch")
         except Exception:
             st.error("Could not open this file.")
             upload = None
@@ -311,7 +311,7 @@ with col2:
                     st.image(
                         overlay_heatmap(image, hmap),
                         caption="Warmer colours = higher model attention",
-                        use_container_width=True,
+                        width="stretch",
                     )
                 else:
                     st.info("GradCAM not available for this input.")
