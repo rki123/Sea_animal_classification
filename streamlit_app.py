@@ -36,6 +36,9 @@ def _pull_weights():
         return
     from huggingface_hub import hf_hub_download
     
+    # Check if a secret token is available in Streamlit cloud or local env
+    token = os.environ.get("HF_TOKEN") or st.secrets.get("HF_TOKEN", None)
+    
     needed = {
         EFF_MODEL_PATH: "checkpoints/efficientnet_sea.keras",
         VIT_CKPT_PATH:  "checkpoints/vit_b16_sea.pt",
@@ -44,15 +47,16 @@ def _pull_weights():
     
     for dst, src in needed.items():
         if not os.path.exists(dst):
-            target_dir = os.path.dirname(dst) or "."
-            os.makedirs(target_dir, exist_ok=True)
+            base_dir = os.path.dirname(dst)
+            if base_dir:
+                os.makedirs(base_dir, exist_ok=True)
             
-           
+            # Pass the security token to read large LFS files cleanly
             hf_hub_download(
                 repo_id=HF_REPO, 
                 filename=src,
-                local_dir=target_dir,
-                local_dir_use_symlinks=False
+                local_dir=".",
+                token=token
             )
 
 try:
