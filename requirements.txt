@@ -1,0 +1,60 @@
+# ─── PyTorch + CUDA ───────────────────────────────────────────────────────────
+# Install separately — pip cannot resolve the CUDA index automatically:
+# pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 \
+#     --index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
+
+# ─── Keras 3 (PyTorch backend) ────────────────────────────────────────────────
+keras==3.12.3
+
+# ─── TensorFlow CPU (ImageDataGenerator + EfficientNet preprocessing only) ───
+# tensorflow-intel is the expected Windows/CPU distribution — no CUDA required here
+tensorflow==2.16.2
+
+# ─── Core data / ML ───────────────────────────────────────────────────────────
+numpy==1.26.4
+pandas==2.3.3
+scikit-learn==1.7.2
+scipy==1.12.0
+
+# ─── Image processing ─────────────────────────────────────────────────────────
+Pillow==12.3.0
+opencv-python==4.11.0.86
+
+# ─── Visualisation ────────────────────────────────────────────────────────────
+matplotlib==3.10.9
+seaborn==0.13.2
+
+# ─── Jupyter ──────────────────────────────────────────────────────────────────
+ipykernel==7.3.0
+ipython==8.39.0
+jupyter_client==8.9.1
+jupyter_core==5.9.1
+
+
+# ─── Web dashboard ────────────────────────────────────────────────────────────
+streamlit==1.59.0
+huggingface_hub>=0.23.0
+
+# ─── TF / Keras internal dependencies  ─────────────
+h5py==3.14.0
+protobuf==4.25.9
+tensorboard==2.16.2
+absl-py==2.5.0
+flatbuffers==25.12.19
+gast==0.7.0
+google-pasta==0.2.0
+grpcio==1.82.0
+libclang==18.1.1
+ml-dtypes==0.3.2
+opt_einsum==3.4.0
+astunparse==1.6.3
+wrapt==2.2.2
+termcolor==3.3.0
+
+# ─── PyTorch internal dependencies ────────────────────────────────────────────
+sympy==1.13.1
+networkx==3.4.2
+filelock==3.29.0
+fsspec==2026.4.0
