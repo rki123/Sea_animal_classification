@@ -17,7 +17,39 @@ Trained on ~12,000 images. Deployed with a Streamlit web dashboard featuring rea
 
 Ensemble weights found by PSO: `EfficientNet=0.382, ViT=0.618`
 
+![Random 40 Test Images Prediction](random40TestimagesPredoutput.png)
 ---
+### Per-Class Classification Report
+The ensemble model achieved a 93.00% global macro F1-score, demonstrating highly robust classification even across fine-grained marine species that share visual similarities.
+
+| Marine Class | Precision | Recall | F1-Score | Support |
+| :--- | :---: | :---: | :---: | :---: |
+| Clams | 0.8962 | 0.8325 | 0.8632 | 197 |
+| Corals | 0.7179 | 0.8400 | 0.7742 | 200 |
+| Crabs | 0.9612 | 0.9900 | 0.9754 | 200 |
+| Dolphin | 0.9579 | 0.9457 | 0.9518 | 313 |
+| Eel | 0.9082 | 0.8945 | 0.9013 | 199 |
+| Fish | 0.8703 | 0.8131 | 0.8407 | 198 |
+| Jelly Fish | 0.9738 | 0.9970 | 0.9853 | 335 |
+| Lobster | 0.9167 | 0.8800 | 0.8980 | 200 |
+| Nudibranchs | 0.9492 | 0.9397 | 0.9444 | 199 |
+| Octopus | 0.8643 | 0.8489 | 0.8565 | 225 |
+| Otter | 0.9950 | 1.0000 | 0.9975 | 200 |
+| Penguin | 0.9679 | 0.9378 | 0.9526 | 193 |
+| Puffers | 0.9083 | 0.9340 | 0.9209 | 212 |
+| Sea Rays | 0.9082 | 0.9216 | 0.9148 | 204 |
+| Sea Urchins | 0.9915 | 1.0000 | 0.9957 | 232 |
+| Seahorse | 0.9831 | 0.9162 | 0.9485 | 191 |
+| Seal | 0.9639 | 0.9639 | 0.9639 | 166 |
+| Sharks | 0.8600 | 0.9149 | 0.8866 | 235 |
+| Shrimp | 0.8653 | 0.8564 | 0.8608 | 195 |
+| Squid | 0.9709 | 0.8653 | 0.9151 | 193 |
+| Starfish | 0.9950 | 1.0000 | 0.9975 | 200 |
+| Turtle_Tortoise | 0.9755 | 0.9947 | 0.9850 | 759 |
+| Whale | 0.8811 | 0.8772 | 0.8791 | 228 |
+| **Overall Accuracy** | | | **0.9300** | **5474** |
+| **Macro Average** | **0.9253** | **0.9201** | **0.9221** | **5474** |
+| **Weighted Average** | **0.9313** | **0.9300** | **0.9302** | **5474** |
 
 ## Architecture
 
@@ -66,6 +98,7 @@ EfficientNetB7                  ViT-B16
 
 Clams · Corals · Crabs · Dolphin · Eel · Fish · Jelly Fish · Lobster · Nudibranchs · Octopus · Otter · Penguin · Puffers · Sea Rays · Sea Urchins · Seahorse · Seal · Sharks · Shrimp · Squid · Starfish · Turtle_Tortoise · Whale
 
+![Sample-grid-Output](samplegridoutput.png)
 ---
 
 ## Project Structure
@@ -146,8 +179,10 @@ checkpoints/efficientnet_sea.keras  →  EfficientNetB7 load, skip training
 checkpoints/vit_b16_sea.pt          →  ViT-B16 load, skip training
 ```
 Delete these files to retrain from scratch.
-
+![Ensemble Model Performance](ModelTestAccuracyoutput.png)
+![Pso Convergence  ](Psoconvergenceoutput.png)
 ---
+
 
 ## Web Dashboard
 
@@ -195,6 +230,8 @@ Gradient-weighted Class Activation Mapping (GradCAM) visualizes which spatial re
 
 - **Red/yellow on the animal** → model is focusing on the correct region
 - **Red/yellow on the background** → the model may be picking up spurious correlations (ocean color, reef texture)
+![Gradcam Prediction EffcientNetB7](GradCamoutput.png)
+![ELA Images](elaoutputs.png)
 
 ---
 
