@@ -37,8 +37,8 @@ def _pull_weights():
     from huggingface_hub import hf_hub_download
     
     needed = {
-        EFF_MODEL_PATH: "efficientnet_sea.keras",
-        VIT_CKPT_PATH:  "vit_b16_sea.pt",
+        EFF_MODEL_PATH: "checkpoints/efficientnet_sea.keras",
+        VIT_CKPT_PATH:  "checkpoints/vit_b16_sea.pt",
         ENSEMBLE_CFG:   "ensemble_pso_config.json",
     }
     
