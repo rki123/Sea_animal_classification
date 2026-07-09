@@ -29,30 +29,37 @@ from src.dataset import vit_transforms
 
 
 
-HF_REPO = "https://huggingface.co/rki123/sea-animal-classifier"
+HF_REPO = "rki123/sea-animal-classifier"
 
 def _pull_weights():
     if not HF_REPO:
         return
     from huggingface_hub import hf_hub_download
+    
     needed = {
         EFF_MODEL_PATH: "efficientnet_sea.keras",
         VIT_CKPT_PATH:  "vit_b16_sea.pt",
         ENSEMBLE_CFG:   "ensemble_pso_config.json",
     }
+    
     for dst, src in needed.items():
         if not os.path.exists(dst):
-            os.makedirs(os.path.dirname(dst) or ".", exist_ok=True)
-            hf_hub_download(repo_id=HF_REPO, filename=src,
-                            local_dir=os.path.dirname(dst) or ".")
+            target_dir = os.path.dirname(dst) or "."
+            os.makedirs(target_dir, exist_ok=True)
+            
+           
+            hf_hub_download(
+                repo_id=HF_REPO, 
+                filename=src,
+                local_dir=target_dir,
+                local_dir_use_symlinks=False
+            )
 
 try:
     _pull_weights()
 except Exception as e:
-    st.error(f"Failed to fetch model weights: {e}")
+    st.error(f"Failed to fetch model weights from Hugging Face: {e}")
     st.stop()
-
-
 st.set_page_config(
     page_title="DeepOcean - Sea Animal Classifier",
     page_icon="🌊",
