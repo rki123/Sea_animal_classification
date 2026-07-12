@@ -58,6 +58,8 @@ The ensemble model achieved a 93.00% global macro F1-score, demonstrating highly
 | **Macro Average** | **0.9253** | **0.9201** | **0.9221** | **5474** |
 | **Weighted Average** | **0.9313** | **0.9300** | **0.9302** | **5474** |
 
+![Confusion Matrix for all classes](confusionMatrixoutput.png)
+
 ## Architecture
 
 ```
