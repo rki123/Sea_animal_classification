@@ -19,6 +19,7 @@ training_logs/
 
 # Dataset (too large for git — download from Kaggle separately)
 dataset/
+Sea_dataset.zip/    
 
 # PSO config is lightweight enough to commit — remove this line if you don't want it
 # ensemble_pso_config.json
