@@ -24,7 +24,7 @@ https://seaanimalclassification-t5jvvi8bnhbcaorleuuxao.streamlit.app/
 
 Ensemble weights found by PSO: `EfficientNet=0.382, ViT=0.618`
 
-![Random 40 Test Images Prediction](random40TestimagesPredoutput.png)
+![Random 40 Test Images Prediction](assets/random40TestimagesPredoutput.png)
 ---
 ### Per-Class Classification Report
 The ensemble model achieved a 93.00% global macro F1-score, demonstrating highly robust classification even across fine-grained marine species that share visual similarities.
@@ -58,7 +58,7 @@ The ensemble model achieved a 93.00% global macro F1-score, demonstrating highly
 | **Macro Average** | **0.9253** | **0.9201** | **0.9221** | **5474** |
 | **Weighted Average** | **0.9313** | **0.9300** | **0.9302** | **5474** |
 
-![Confusion Matrix for all classes](confusionMatrixoutput.png)
+![Confusion Matrix for all classes](assets/confusionMatrixoutput.png)
 
 ## Architecture
 
@@ -107,7 +107,7 @@ EfficientNetB7                  ViT-B16
 
 Clams · Corals · Crabs · Dolphin · Eel · Fish · Jelly Fish · Lobster · Nudibranchs · Octopus · Otter · Penguin · Puffers · Sea Rays · Sea Urchins · Seahorse · Seal · Sharks · Shrimp · Squid · Starfish · Turtle_Tortoise · Whale
 
-![Sample-grid-Output](samplegridoutput.png)
+![Sample-grid-Output](assets/samplegridoutput.png)
 ---
 
 ## Project Structure
@@ -188,8 +188,8 @@ checkpoints/efficientnet_sea.keras  →  EfficientNetB7 load, skip training
 checkpoints/vit_b16_sea.pt          →  ViT-B16 load, skip training
 ```
 Delete these files to retrain from scratch.
-![Ensemble Model Performance](ModelTestAccuracyoutput.png)
-![Pso Convergence  ](Psoconvergenceoutput.png)
+![Ensemble Model Performance](assets/ModelTestAccuracyoutput.png)
+![Pso Convergence  ](assets/Psoconvergenceoutput.png)
 ---
 
 
@@ -239,8 +239,8 @@ Gradient-weighted Class Activation Mapping (GradCAM) visualizes which spatial re
 
 - **Red/yellow on the animal** → model is focusing on the correct region
 - **Red/yellow on the background** → the model may be picking up spurious correlations (ocean color, reef texture)
-![Gradcam Prediction EffcientNetB7](GradCamoutput.png)
-![ELA Images](elaoutputs.png)
+![Gradcam Prediction EffcientNetB7](assets/GradCamoutput.png)
+![ELA Images](assets/elaoutputs.png)
 
 ---
 
